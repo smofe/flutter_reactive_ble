@@ -31,6 +31,8 @@ dependency_overrides:
     path: ../packages/reactive_ble_mobile
   reactive_ble_web:
     path: ../packages/reactive_ble_web
+  reactive_ble_desktop:
+    path: ../packages/reactive_ble_desktop
 
 flutter:
   uses-material-design: true

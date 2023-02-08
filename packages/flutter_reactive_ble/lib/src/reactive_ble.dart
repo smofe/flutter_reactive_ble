@@ -11,6 +11,7 @@ import 'package:flutter_reactive_ble/src/rx_ext/repeater.dart';
 import 'package:meta/meta.dart';
 import 'package:reactive_ble_mobile/reactive_ble_mobile.dart';
 import 'package:reactive_ble_web/reactive_ble_web.dart';
+import 'package:reactive_ble_desktop/reactive_ble_desktop.dart';
 import 'package:reactive_ble_platform_interface/reactive_ble_platform_interface.dart';
 
 /// [FlutterReactiveBle] is the facade of the library. Its interface allows to
@@ -105,12 +106,12 @@ class FlutterReactiveBle {
         'REACTIVE_BLE',
         print,
       );
-
+      
       ReactiveBlePlatform.instance = kIsWeb
-      ? const ReactiveBleWebPlatformFactory().create()
-      : const ReactiveBleMobilePlatformFactory().create(
-        logger: _debugLogger,
-      );
+          ? const ReactiveBleWebPlatformFactory().create()
+          : Platform.isAndroid || Platform.isIOS
+              ? const ReactiveBleMobilePlatformFactory().create(logger: _debugLogger)
+              : const ReactiveBleDesktopPlatformFactory().create();
 
       _blePlatform = ReactiveBlePlatform.instance;
 
