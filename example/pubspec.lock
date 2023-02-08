@@ -206,7 +206,7 @@ packages:
     dependency: "direct main"
     description:
       path: "../packages/flutter_reactive_ble"
-      relative: false
+      relative: true
     source: path
     version: "5.0.3"
   flutter_test:
